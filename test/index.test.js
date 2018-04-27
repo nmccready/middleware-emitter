@@ -1,9 +1,8 @@
 const test = require('ava');
 const EventEmitter = require('events');
-const MiddlewareEmitter = require('../');
-const { Wrap } = MiddlewareEmitter;
+const MiddleWrapEmitter = require('../');
 
-[new MiddlewareEmitter({}), new Wrap(new EventEmitter(), {})].forEach(
+[new MiddleWrapEmitter({}), new MiddleWrapEmitter({}, new EventEmitter())].forEach(
   (emitter) => {
     test('fist', (t) => {
       let total = 0;

@@ -1,8 +1,10 @@
-# Middleware Emitter
+# middleware-wrap-emitter [![Build Status](https://travis-ci.org/nmccready/middleware-wrap-emitter.svg)](https://travis-ci.org/nmccready/middleware-wrap-emitter)
+
+Forked and Inspired by [middleware-emitter][https://github.com/jarradseers/middleware-emitter]. The libraries are similar except, this library wraps an emitter instead of inheriting one.
 
   Use middleware to chain your event logic, compatible with express middleware (and possibly others).  This allows you to not only break up logic for when an event is fired, but let's you share middleware between frameworks if necessary.
 
-  The middleware-emitter project also brings multiple event triggering and capturing.
+  The middleware-wrap-emitter project also brings multiple event triggering and capturing.
 
   _req_ The req is the 'request', the `req.ctx` is the context on the request, it's used to build up the state throughout the middleware.
 
@@ -15,7 +17,7 @@
 Assuming you have broken up your middleware functions:
 
 ```js
-const emitter = require('middleware-emitter');
+const emitter = require('middleware-wrap-emitter');
 const app = require('./middleware/app');
 
 emitter.on('hello', app.load, app.hello, app.output, app.handleError)
@@ -25,7 +27,7 @@ emitter.on('hello', app.load, app.hello, app.output, app.handleError)
 ## Installation
 
 ```bash
-$ npm install middleware-emitter
+$ npm install middleware-wrap-emitter
 ```
 
 ## Features
@@ -42,14 +44,16 @@ $ npm install middleware-emitter
 
 ## Options
 
-  MiddlewareEmitter extends the base EventEmitter class, therefore all standard options apply.
+  MiddlewareWrapEmitter extends the base EventEmitter class, therefore all standard options apply.
 
 ## Examples
 
 A simple standalone example:
 
 ```js
-const emitter = require('middleware-emitter');
+const Emitter = require('middleware-wrap-emitter');
+
+const emitter = new Emitter() || new Emitter({}, require('election').ipcMain);
 
 emitter.on('hello',
 
