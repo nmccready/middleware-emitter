@@ -11,3 +11,5 @@
  */
 
 module.exports = require('./lib/middleware-emitter');
+
+module.exports.wrap = require('./lib/middleware-wrap-emitter');

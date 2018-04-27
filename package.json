@@ -11,7 +11,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "eslint . --fix && node test"
+    "test": "eslint . --fix && ava ./test/*.test.js"
   },
   "repository": {
     "type": "git",
@@ -39,6 +39,14 @@
     "object-merger": "^1.0.1"
   },
   "devDependencies": {
-    "eslint": "^3.18.0"
+    "ava": "^0.25.0",
+    "eslint": "^4",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.7.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "prettier": "^1",
+    "prettier-eslint": "^8"
   }
 }

@@ -13,4 +13,5 @@ node_modules
 .wafpickle-*
 .lock-wscript
 npm-debug.log
-.Spotlight-V100
+.Spotlight-V100--help
+*.lock
