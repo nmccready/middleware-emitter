@@ -38,6 +38,7 @@
   "homepage": "https://github.com/nmccready/middleware-wrap-emitter#readme",
   "dependencies": {
     "delegates": "^1.0.0",
+    "koa-compose": "^4.0.0",
     "object-merger": "^1.0.1"
   },
   "devDependencies": {
