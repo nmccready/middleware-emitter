@@ -11,10 +11,8 @@ global.Promise = Bluebird;
 ].forEach((emitter) => {
   test.cb('all middle ware is called and handled', (t) => {
     let total = 0;
-    const expectedRes1 = { ctx: { one: true, two: true } };
-    const expectedReq1 = {
-      ctx: { hello: 'world', three: true }
-    };
+    const expectedRes1 = { one: true, two: true };
+    const expectedReq1 = { hello: 'world', three: true };
 
     emitter
       .on(
@@ -30,15 +28,15 @@ global.Promise = Bluebird;
           }
         },
         async ({ req, res }, next) => {
-          res.ctx.one = true;
+          res.one = true;
           await next();
         },
         async ({ req, res }, next) => {
-          res.ctx.two = true;
+          res.two = true;
           await next();
         },
         async ({ req, res }, next) => {
-          req.ctx.three = true;
+          req.three = true;
           await next();
         },
         async ({ req, res }, next) => {
@@ -63,7 +61,7 @@ global.Promise = Bluebird;
     emitter
       .on(events, async ({ req, event: { name } }) => {
         t.truthy(events.includes(name));
-        t.deepEqual(req.ctx.some, 'data') || total++;
+        t.deepEqual(req.some, 'data') || total++;
 
         if (events.length === total) {
           t.end();
