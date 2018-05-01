@@ -2,7 +2,7 @@
 
 Forked and Inspired by [middleware-emitter][https://github.com/jarradseers/middleware-emitter]. The libraries are similar except, this library wraps an emitter instead of inheriting one.
 
-Use middleware to chain your event logic, compatible with express middleware (and possibly others). This allows you to not only break up logic for when an event is fired, but let's you share middleware between frameworks if necessary.
+This allows you to not only break up logic for when an event is fired, but let's you share middleware between frameworks if necessary.
 
 The middleware-wrap-emitter project also brings multiple event triggering and capturing.
 
