@@ -154,4 +154,41 @@ global.Promise = Bluebird;
       .emit('errors2')
       .emit('errors1');
   });
+
+  test.cb('an error not handled should emit and error', (t) => {
+    emitter
+      .on(
+        'fail',
+        async ({ req, res }, next) => {
+          await next();
+        },
+        async ({ req, res }, next) => {
+          throw new Error('Not Handled.');
+        }
+      )
+      .once('error', ({ error }) => {
+        t.deepEqual(error.message, 'Not Handled.');
+        t.end();
+      })
+      .emit('fail', { hello: 'world' });
+  });
+});
+
+// removed from loop to not kick off from other test cases (on.error on same emitter across two tests)
+test.cb('an error not handled should emit and error (raw emitter)', (t) => {
+  new MiddleWrapEmitter({})
+    .on(
+      'fail2',
+      async ({ req, res }, next) => {
+        await next();
+      },
+      async ({ req, res }, next) => {
+        throw new Error('Not Handled.');
+      }
+    )
+    .emit('fail2', { hello: 'world' })
+    .emitter.once('error', (error) => {
+      t.deepEqual(error.message, 'Not Handled.');
+      t.end();
+    });
 });
